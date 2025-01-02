@@ -45,7 +45,7 @@ def add_element(db_name ,table_name, column_name, contents):
     con.commit()
     print(f"{content} behelyezve ide: {column_name}")
 
-def delete_row(db_name, table_name, id):
+def delete_row(db_name, table_name, condition):
     con = sqlite3.connect(db_name)
     cur = con.cursor()
-    ins = cur.execute(f"DELETE FROM {table_name} WHERE id={id}")
+    ins = cur.execute(f"DELETE FROM {table_name} WHERE {condition}")
