@@ -1,0 +1,8 @@
+setup.py
+easy_sqlite_db/__init__.py
+easy_sqlite_db/easydb.py
+easy_sqlite_db.egg-info/PKG-INFO
+easy_sqlite_db.egg-info/SOURCES.txt
+easy_sqlite_db.egg-info/dependency_links.txt
+easy_sqlite_db.egg-info/requires.txt
+easy_sqlite_db.egg-info/top_level.txt

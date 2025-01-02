@@ -1,0 +1,15 @@
+Metadata-Version: 2.1
+Name: easy-sqlite-db
+Version: 0.0.1
+Summary: An easy database package
+Author: Simson_on_the_road
+Keywords: python,easy,db,database,easydb
+Classifier: Development Status :: 1 - Planning
+Classifier: Intended Audience :: Developers
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: Unix
+Classifier: Operating System :: MacOS :: MacOS X
+Classifier: Operating System :: Microsoft :: Windows
+Description-Content-Type: text/markdown
+
+A package that based on sqlite
