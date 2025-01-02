@@ -1,0 +1,5 @@
+/.vscode
+/database.db
+/main.py
+/test.db
+/test.py
