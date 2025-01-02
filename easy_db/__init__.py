@@ -12,12 +12,12 @@ def init_db(db_name):
     
     print("Adatbázis létrehozva!")
 
-def create_table(db_name, table_name, coloumns):
+def create_table(db_name, table_name, column_name):
     print(db_name)
     con = sqlite3.connect(db_name)
     cur = con.cursor()
     coloumn = ""
-    for col in coloumns:
+    for col in column_name:
         coloumn += f"{col}, "
     coloumn = coloumn[:-2]
     print(coloumn)
@@ -44,6 +44,15 @@ def add_element(db_name ,table_name, column_name, contents):
     ins = cur.execute(f"insert into {table_name} ({coloumn}) values ({content})")
     con.commit()
     print(f"{content} behelyezve ide: {column_name}")
+
+
+
+def select_item(db_name, table_name, column_name):
+    con = sqlite3.connect(db_name)
+    cur = con.cursor()
+    ins = cur.execute(f"select {column_name} FROM {table_name}")
+    output = cur.fetchall()
+    return output
 
 def delete_row(db_name, table_name, condition):
     con = sqlite3.connect(db_name)
