@@ -7,7 +7,7 @@ git clone https://github.com/simsononroad/easy_sqlite_db.git
 cd easy_sqlite_db
 mv easy_db ../
 cd ..
-rm -r easy_sqlite_db
+sudo rm -r easy_sqlite_db
 cat > main.py << EOF
 from easy_db import *
 EOF
