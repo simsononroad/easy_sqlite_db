@@ -1,8 +1,10 @@
 # Install
-1. Write to the terminal: `https://github.com/simsononroad/easy_db__Python_libary.git`
+- Linux:
+    1. Visit the `https://github.com/simsononroad/easy_sqlite_db/releases/tag/0.1` url
+    2. Download the `start.sh` file to the folder where you want to work
+    3. give `run as program` to the `start.sh`
+    4. run in the terminal whit the `./start.sh` command
 
-2. Create a .py file
-3. import: `from easy_db.init import *`
 
 # usage
 - `init_db(database_name)` 
