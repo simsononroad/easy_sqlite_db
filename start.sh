@@ -11,4 +11,8 @@ echo "Az esetleg felbukkanó jelszó kérés a felesleges mappa törléséhez sz
 sudo rm -r easy_sqlite_db
 cat > main.py << EOF
 from easy_db import *
+def main():
+    pass
+if __name__ == "__main__":
+    main()
 EOF
