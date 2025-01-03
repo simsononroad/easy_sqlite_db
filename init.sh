@@ -7,7 +7,7 @@ git clone https://github.com/simsononroad/easy_sqlite_db.git
 cd easy_sqlite_db
 mv easy_db ../
 cd ..
-echo "A jelszó a felesleges mappa törléséhez szükséges!"
+echo "Az esetleg felbukkanó jelszó kérés a felesleges mappa törléséhez szükséges!"
 sudo rm -r easy_sqlite_db
 cat > main.py << EOF
 from easy_db import *
