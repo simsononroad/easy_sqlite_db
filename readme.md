@@ -1,7 +1,6 @@
-<a href="#english">Angol</a>
-
-
-<a href="#magyar">Magyar</a>
+Leírás/Description:
+- <a href="#english">English</a>
+- <a href="#magyar">Magyar</a>
 
 
 # English
