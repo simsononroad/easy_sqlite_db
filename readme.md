@@ -21,6 +21,12 @@
     - -> database_name: `str`
     - -> table_name: `str`
     - -> columns: `str`
+- `update_row(database_name, table_name, column_name, new_value, condition)`
+    - -> database_name: `str`
+    - -> table_name: `str`
+    - -> column_name: `str`
+    - -> new_value: `str`/`int`
+    - -> condition: `str`
 
 # example:
 ```

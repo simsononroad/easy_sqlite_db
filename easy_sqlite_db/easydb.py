@@ -54,3 +54,9 @@ def delete_row(db_name, table_name, condition):
     con = sqlite3.connect(db_name)
     cur = con.cursor()
     ins = cur.execute(f"DELETE FROM {table_name} WHERE {condition}")
+    
+def update_row(db_name, table_name, column_name, new_value, condition):
+    con = sqlite3.connect(db_name)
+    cur = con.cursor()
+    ins = cur.execute(f"UPDATE {table_name} SET {column_name} = '{new_value}' WHERE {condition}")
+    con.commit()
