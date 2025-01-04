@@ -45,9 +45,9 @@ Leírás/Description:
     - -> table_name: `str`
     - -> condition: `str`
     - condition example
-        > [column name] : [value]
+        > [column name] : '[value]'
         
-        > name: jack
+        > name: 'jack'
 
 
 ### Developer mode
@@ -66,9 +66,9 @@ Leírás/Description:
     - -> coloumn_name: `list`
 - `quick_delete(condition)`
     - condition example
-        > [coloumn name] : [value]
+        > [coloumn name] : '[value]'
         
-        > name: david
+        > name: 'david'
 
 
 
@@ -114,9 +114,9 @@ Leírás/Description:
     - -> table_name: `str`
     - -> condition: `str`
     - condition example
-        > [oszlop neve] : [érték]
+        > [oszlop neve] : '[érték]'
         
-        > nev: david
+        > nev: 'david'
 
 
 ### Fejlesztőknek:
@@ -135,9 +135,9 @@ Leírás/Description:
     - -> coloumn_name: `list`
 - `quick_delete(condition)`
     - condition example
-        > [oszlop neve] : [érték]
+        > [oszlop neve] : '[érték]'
         
-        > name: david
+        > name: 'david'
 
 
 # Példa:
