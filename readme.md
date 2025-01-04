@@ -40,6 +40,14 @@ Leírás/Description:
     - -> column_name: `str`
     - -> new_value: `str`/`int`
     - -> condition: `str`
+- `delete_row(database_name, table_name, condition)`
+    - -> database_name: `str`
+    - -> table_name: `str`
+    - -> condition: `str`
+    - condition example
+        > [column name] : [value]
+        
+        > name: jack
 
 # example:
 ```
@@ -99,6 +107,15 @@ output = select_item(table_name="tabla", db_name="database.db", column_name="els
     - -> new_value: `str`/`int`
     - -> condition: `str`
 
+- `delete_row(database_name, table_name, condition)`
+    - -> database_name: `str`
+    - -> table_name: `str`
+    - -> condition: `str`
+    - condition example
+        > [oszlop neve] : [érték]
+        
+        > nev: david
+
 # Példa:
 ```
 init_db("database.db")
@@ -106,7 +123,7 @@ create_table("database.db", "tabla", ["elso_oszlop", "második_oszlop"])
 add_element("database.db" ,"tabla", ["elso_oszlop", "második_oszlop"], ["content", "masodik"])
 output = select_item("database.db", "tabla", "elso_oszlop")
 ```
-<img src="code_snap.PNG">
+<img src="img/code_snap.PNG">
 
 - vagy
 
@@ -116,5 +133,5 @@ create_table(db_name="database.db", table_name="tabla", column_name=["elso_oszlo
 add_element(db_name="database.db", table_name="tabla", column_name=["elso_oszlop", "második_oszlop"], contents=["content", "masodik"])
 output = select_item(table_name="tabla", db_name="database.db", column_name="elso_oszlop")
 ```
-<img src="code_snap2.PNG">
+<img src="img/code_snap2.PNG">
 
