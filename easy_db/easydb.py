@@ -2,7 +2,7 @@ import sqlite3
 
 
 def version():
-    return "EasyDB 0.3"
+    return "EasyDB 0.4"
 
 
 def init_db(db_name):
@@ -48,7 +48,12 @@ def add_element(db_name ,table_name, column_name, contents):
 def select_item(db_name, table_name, column_name):
     con = sqlite3.connect(db_name)
     cur = con.cursor()
-    ins = cur.execute(f"select {column_name} FROM {table_name}")
+    coloumn = ""
+    content = ""
+    for col in column_name:
+        coloumn += f"{col}, "
+    coloumn = coloumn[:-2]
+    ins = cur.execute(f"select {coloumn} FROM {table_name}")
     output = cur.fetchall()
     return output
 
@@ -62,4 +67,56 @@ def update_row(db_name, table_name, column_name, new_value, condition):
     con = sqlite3.connect(db_name)
     cur = con.cursor()
     ins = cur.execute(f"UPDATE {table_name} SET {column_name} = '{new_value}' WHERE {condition}")
+    con.commit()
+    
+    
+#=========dev functions=========
+
+def quick_start(column_name):
+    con = sqlite3.connect(f"database.db")
+    cur = con.cursor()
+    coloumn = ""
+    for col in column_name:
+        coloumn += f"{col}, "
+    coloumn = coloumn[:-2]
+    try:
+        cur.execute(f"CREATE TABLE tables(id INTEGER PRIMARY KEY AUTOINCREMENT, {coloumn})")
+        print("Tábla létrehozva")
+    except:
+        pass
+
+def quick_add(column_name, contents):
+    coloumn = ""
+    content = ""
+    for col in column_name:
+        coloumn += f"{col}, "
+    coloumn = coloumn[:-2]
+
+    for cont in contents:
+        content += f"'{cont}', "
+    content = content[:-2]
+    con = sqlite3.connect("database.db")
+    cur = con.cursor()
+    ins = cur.execute(f"select {col} FROM tables")
+    output = cur.fetchall()
+
+    ins = cur.execute(f"insert into tables ({coloumn}) values ({content})")
+    con.commit()
+
+def quick_select(column_name):
+    coloumn = ""
+    content = ""
+    for col in column_name:
+        coloumn += f"{col}, "
+    coloumn = coloumn[:-2]
+    con = sqlite3.connect("database.db")
+    cur = con.cursor()
+    ins = cur.execute(f"select {coloumn} FROM tables")
+    output = cur.fetchall()
+    return output
+
+def quick_delete(condition):
+    con = sqlite3.connect("database.db")
+    cur = con.cursor()
+    ins = cur.execute(f"DELETE FROM tables WHERE {condition}")
     con.commit()

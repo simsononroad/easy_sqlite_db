@@ -4,7 +4,7 @@ Leírás/Description:
 
 
 # English
-# Install
+### Install
 - Linux/mac:
     1. Visit the `https://github.com/simsononroad/easy_sqlite_db/releases/tag/0.1` url
     2. Download the `start.sh` file to the folder where you want to work
@@ -17,7 +17,7 @@ Leírás/Description:
     4. run the `start.bat` file
 
 
-# usage
+### usage
 - `init_db(database_name)` 
     - -> database_name: `str`
 - `create_table(database_name, table_name, columns)`
@@ -33,11 +33,11 @@ Leírás/Description:
 - `select_item(database_name, table_name, columns)`, return -> Items
     - -> database_name: `str`
     - -> table_name: `str`
-    - -> columns: `str`
-- `update_row(database_name, table_name, column_name, new_value, condition)`
+    - -> columns: `list`
+- `update_row(database_name, table_name, coloumn_name, new_value, condition)`
     - -> database_name: `str`
     - -> table_name: `str`
-    - -> column_name: `str`
+    - -> coloumn_name: `str`
     - -> new_value: `str`/`int`
     - -> condition: `str`
 - `delete_row(database_name, table_name, condition)`
@@ -48,6 +48,21 @@ Leírás/Description:
         > [column name] : [value]
         
         > name: jack
+
+
+### Developer mode
+- This can help for the developers when they want to start the code quickly
+
+- `quick_start(coloumn_name)`
+    - -> coloumn_name: `list`
+    - Description
+        - This will creat the database with `database.db` name and the table with `tables` name
+        
+- `quick_add(coloumn_name, contents)`
+    - -> coloumn_name: `list`
+    - -> contents: `list`
+
+
 
 # example:
 ```
@@ -63,9 +78,9 @@ output = select_item("database.db", "tabla", "elso_oszlop)
 
 ```
 init_db(db_name="database.db")
-create_table(db_name="database.db", table_name="tabla", column_name=["elso_oszlop", "második_oszlop"])
-add_element(db_name="database.db", table_name="tabla", column_name=["elso_oszlop", "második_oszlop"], contents=["content", "masodik"])
-output = select_item(table_name="tabla", db_name="database.db", column_name="elso_oszlop")
+create_table(db_name="database.db", table_name="tabla", coloumn_name=["elso_oszlop", "második_oszlop"])
+add_element(db_name="database.db", table_name="tabla", coloumn_name=["elso_oszlop", "második_oszlop"], contents=["content", "masodik"])
+output = select_item(table_name="tabla", db_name="database.db", coloumn_name="elso_oszlop")
 ```
 <img src="img/code_snap2.PNG">
 
@@ -100,10 +115,10 @@ output = select_item(table_name="tabla", db_name="database.db", column_name="els
     - -> database_name: `str`
     - -> table_name: `str`
     - -> columns: `str`
-- `update_row(database_name, table_name, column_name, new_value, condition)`
+- `update_row(database_name, table_name, coloumn_name, new_value, condition)`
     - -> database_name: `str`
     - -> table_name: `str`
-    - -> column_name: `str`
+    - -> coloumn_name: `str`
     - -> new_value: `str`/`int`
     - -> condition: `str`
 
@@ -129,9 +144,9 @@ output = select_item("database.db", "tabla", "elso_oszlop")
 
 ```
 init_db(db_name="database.db")
-create_table(db_name="database.db", table_name="tabla", column_name=["elso_oszlop", "második_oszlop"])
-add_element(db_name="database.db", table_name="tabla", column_name=["elso_oszlop", "második_oszlop"], contents=["content", "masodik"])
-output = select_item(table_name="tabla", db_name="database.db", column_name="elso_oszlop")
+create_table(db_name="database.db", table_name="tabla", coloumn_name=["elso_oszlop", "második_oszlop"])
+add_element(db_name="database.db", table_name="tabla", coloumn_name=["elso_oszlop", "második_oszlop"], contents=["content", "masodik"])
+output = select_item(table_name="tabla", db_name="database.db", coloumn_name="elso_oszlop")
 ```
 <img src="img/code_snap2.PNG">
 
