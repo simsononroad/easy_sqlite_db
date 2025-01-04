@@ -2,7 +2,7 @@ import sqlite3
 
 
 def version():
-    print("EasyDB 0.1")
+    return "EasyDB 0.3"
 
 
 def init_db(db_name):
@@ -56,6 +56,7 @@ def delete_row(db_name, table_name, condition):
     con = sqlite3.connect(db_name)
     cur = con.cursor()
     ins = cur.execute(f"DELETE FROM {table_name} WHERE {condition}")
+    con.commit()
     
 def update_row(db_name, table_name, column_name, new_value, condition):
     con = sqlite3.connect(db_name)
