@@ -88,7 +88,7 @@ output = select_item(table_name="tabla", db_name="database.db", column_name="els
     - -> table_name: `str`
     - -> columns: `list`
     - -> content: `list`
-- `select_item(database_name, table_name, columns)`, visszatérési érték -> Elemek
+- `select_item(database_name, table_name, columns)`, visszatérési érték -> `list`
     - -> database_name: `str`
     - -> table_name: `str`
     - -> columns: `str`
