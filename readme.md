@@ -73,7 +73,7 @@ Leírás/Description:
 
 
 # Magyar
-# Telepítés
+### Telepítés
 - Linux/mac:
     1. Látogass el a `https://github.com/simsononroad/easy_sqlite_db/releases/tag/0.1` URL-re
     2. Töltsd le a `start.sh` fájlt abba a mappába, ahol dolgozni szeretnél
@@ -85,7 +85,7 @@ Leírás/Description:
     2. Töltsd le a `start.bat` fájlt abba a mappába, ahol dolgozni szeretnél
     3. Futtasd a `start.bat` fájlt
 
-# Használat
+### Használat
 - `init_db(database_name)`
     - -> database_name: `str`
 - `create_table(database_name, table_name, columns)`
