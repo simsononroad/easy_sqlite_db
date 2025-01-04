@@ -9,7 +9,7 @@ mv easy_db ../
 cd ..
 echo "Az esetleg felbukkanó jelszó kérés a felesleges mappa törléséhez szükséges!"
 sudo rm -r easy_sqlite_db
-cat > main.py << EOF
+cat > yourfile.py << EOF
 from easy_db import *
 def main():
     pass

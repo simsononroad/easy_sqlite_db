@@ -25,7 +25,7 @@ echo A felesleges mappa törlése...
 rd /s /q easy_sqlite_db
 
 REM Python szkript generálása
-echo from easy_db import * > main.py
+echo from easy_db import * > yourfile.py
 echo def main(): >> main.py
 echo     pass >> main.py
 echo if __name__ ^== "__main__": >> main.py
