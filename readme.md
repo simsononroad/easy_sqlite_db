@@ -62,27 +62,14 @@ Leírás/Description:
     - -> coloumn_name: `list`
     - -> contents: `list`
 
+- `quick_select(coloumn_name)`
+    - -> coloumn_name: `list`
+- `quick_delete(condition)`
+    - condition example
+        > [coloumn name] : [value]
+        
+        > name: david
 
-
-# example:
-```
-init_db("database.db")
-create_table("database.db", "tabla", ["elso_oszlop", "második_oszlop"])
-add_element("database.db" ,"tabla", ["elso_oszlop", "második_oszlop"], ["content", "masodik"])
-output = select_item("database.db", "tabla", "elso_oszlop)
-
-```
-<img src="img/code_snap.PNG">
-
-- or
-
-```
-init_db(db_name="database.db")
-create_table(db_name="database.db", table_name="tabla", coloumn_name=["elso_oszlop", "második_oszlop"])
-add_element(db_name="database.db", table_name="tabla", coloumn_name=["elso_oszlop", "második_oszlop"], contents=["content", "masodik"])
-output = select_item(table_name="tabla", db_name="database.db", coloumn_name="elso_oszlop")
-```
-<img src="img/code_snap2.PNG">
 
 
 # Magyar
@@ -131,16 +118,30 @@ output = select_item(table_name="tabla", db_name="database.db", coloumn_name="el
         
         > nev: david
 
-# Példa:
-```
-init_db("database.db")
-create_table("database.db", "tabla", ["elso_oszlop", "második_oszlop"])
-add_element("database.db" ,"tabla", ["elso_oszlop", "második_oszlop"], ["content", "masodik"])
-output = select_item("database.db", "tabla", "elso_oszlop")
-```
-<img src="img/code_snap.PNG">
 
-- vagy
+### Fejlesztőknek:
+- Ez segíthet a fejlesztőknek ha csak tesztelni szeretnének és nem akarnak a nevekkel bajlódni
+
+- `quick_start(coloumn_name)`
+    - -> coloumn_name: `list`
+    - Description
+        - Ez megfogja csinálni az adatbázist `database.db` néven és létrehoz egy táblát `tables` néven.
+        
+- `quick_add(coloumn_name, contents)`
+    - -> coloumn_name: `list`
+    - -> contents: `list`
+
+- `quick_select(coloumn_name)`
+    - -> coloumn_name: `list`
+- `quick_delete(condition)`
+    - condition example
+        > [oszlop neve] : [érték]
+        
+        > name: david
+
+
+# Példa:
+
 
 ```
 init_db(db_name="database.db")
