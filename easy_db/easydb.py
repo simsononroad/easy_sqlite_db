@@ -1,6 +1,8 @@
 import sqlite3
 
 
+def version():
+    print("EasyDB 0.1")
 
 
 def init_db(db_name):
