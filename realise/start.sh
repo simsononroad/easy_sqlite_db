@@ -16,3 +16,6 @@ def main():
 if __name__ == "__main__":
     main()
 EOF
+
+echo "Késsz"
+echo "Verzió: 1.0"

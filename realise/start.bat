@@ -1,6 +1,7 @@
 @echo off
 setlocal enabledelayedexpansion
 
+
 REM Ellenőrizzük, hogy a Git telepítve van-e
 where git >nul 2>nul
 if %errorlevel% neq 0 (
@@ -32,3 +33,4 @@ echo if __name__ ^== "__main__": >> main.py
 echo     main() >> main.py
 
 echo Kész!
+echo Verzió: 1.0

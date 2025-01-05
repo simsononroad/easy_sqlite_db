@@ -5,3 +5,5 @@
 /test.py
 easy_db/__pycache__
 env
+convert.py
+databse1.db

@@ -18,6 +18,13 @@ Leírás/Description:
 
 
 ### usage
+
+Create table: `[variable name] = create("[database name].db")`
+
+Függvény meghívása: `[variable name].[function name](function parameters)`
+
+<a href="#példa">example</a>
+
 - `init_db(database_name)` 
     - -> database_name: `str`
 - `create_table(database_name, table_name, columns)`
@@ -86,6 +93,13 @@ Leírás/Description:
     3. Futtasd a `start.bat` fájlt
 
 ### Használat
+
+Tábla létrehozása: `[változó név] = create("[adatbázis neve].db")`
+
+Függvény meghívása: `[változó név].[függvény neve](függvény paraméterei)`
+
+<a href="#példa">példa</a>
+
 - `init_db(database_name)`
     - -> database_name: `str`
 - `create_table(database_name, table_name, columns)`
@@ -144,10 +158,20 @@ Leírás/Description:
 
 
 ```
-init_db(db_name="database.db")
-create_table(db_name="database.db", table_name="tabla", coloumn_name=["elso_oszlop", "második_oszlop"])
-add_element(db_name="database.db", table_name="tabla", coloumn_name=["elso_oszlop", "második_oszlop"], contents=["content", "masodik"])
-output = select_item(table_name="tabla", db_name="database.db", coloumn_name="elso_oszlop")
+from easy_db import *
+
+database = create("databse1.db")
+
+print(create.version)
+
+database.init_db()
+database.create_table("tabla1", ["name", "age"])
+database.add_element(table_name="tabla1", coloumn_name=["name", "age"], contents=["Jack", 15])
+database.add_element(table_name="tabla1", coloumn_name=["name", "age"], contents=["david", 10])
+
+database.update_row("tabla1", coloumn_name="name", new_value="kispista", condition="id=1")
+
+database.delete_row(table_name="tabla1", condition="name='Jack'")
 ```
-<img src="img/code_snap2.PNG">
+<img src="img/code_snap.png">
 
