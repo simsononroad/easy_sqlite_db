@@ -33,4 +33,4 @@ echo if __name__ ^== "__main__": >> main.py
 echo     main() >> main.py
 
 echo Kész!
-echo Verzió: 1.0
+echo Verzió: 1.1

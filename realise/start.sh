@@ -18,4 +18,4 @@ if __name__ == "__main__":
 EOF
 
 echo "Késsz"
-echo "Verzió: 1.0"
+echo "Verzió: 1.1"

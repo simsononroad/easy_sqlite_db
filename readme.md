@@ -19,7 +19,11 @@ Leírás/Description:
 
 ### usage
 
-Create table: `[variable name] = create("[database name].db")`
+- Create table: `[variable name] = create("[database name].db", [True/False])`
+    - -> first index: database_name.db
+    - -> second index: 
+        - `True`: It will print out the log
+        - `False`: This will not log out anything
 
 Függvény meghívása: `[variable name].[function name](function parameters)`
 
@@ -56,7 +60,10 @@ Függvény meghívása: `[variable name].[function name](function parameters)`
         
         > name: 'jack'
 
-
+- `get_db_info(table_name, coloumn_name)`
+    - -> table name: `str`
+    - -> coloumn_name: `list`
+    - return:tuple -> firs: database name || second: coloumns_name || third: number of rows || fourth: number of coloumns
 ### Developer mode
 - This can help for the developers when they want to start the code quickly
 
@@ -79,6 +86,8 @@ Függvény meghívása: `[variable name].[function name](function parameters)`
 
 
 
+
+
 # Magyar
 ### Telepítés
 - Linux/mac:
@@ -94,7 +103,11 @@ Függvény meghívása: `[variable name].[function name](function parameters)`
 
 ### Használat
 
-Tábla létrehozása: `[változó név] = create("[adatbázis neve].db")`
+- Tábla létrehozása: `[változó név] = create("[adatbázis név].db", [True/False])`
+    - -> ELső index: database_name.db
+    - -> Második index: 
+        - `True`: Ki fogja írni hogy mit hajtott végre
+        - `False`: Nem fogja ki írni hogy mit hajtott végre
 
 Függvény meghívása: `[változó név].[függvény neve](függvény paraméterei)`
 
@@ -132,6 +145,11 @@ Függvény meghívása: `[változó név].[függvény neve](függvény paraméte
         
         > nev: 'david'
 
+- `get_db_info(table_name, coloumn_name)`
+    - -> table name: `str`
+    - -> coloumn_name: `list`
+    - return: tuple -> első elem: adatbázis neve || második elem: oszlopok neve || harmadik elem: sorok száma || negyedik elem: oszlopk száma
+
 
 ### Fejlesztőknek:
 - Ez segíthet a fejlesztőknek ha csak tesztelni szeretnének és nem akarnak a nevekkel bajlódni
@@ -160,18 +178,30 @@ Függvény meghívása: `[változó név].[függvény neve](függvény paraméte
 ```
 from easy_db import *
 
+# Create database
 database = create("databse1.db")
 
 print(create.version)
 
+# Create database
 database.init_db()
+
+#create table
 database.create_table("tabla1", ["name", "age"])
+
+#Add item to database
 database.add_element(table_name="tabla1", coloumn_name=["name", "age"], contents=["Jack", 15])
 database.add_element(table_name="tabla1", coloumn_name=["name", "age"], contents=["david", 10])
 
+#replace item in database
 database.update_row("tabla1", coloumn_name="name", new_value="kispista", condition="id=1")
 
+#Delete item from database
 database.delete_row(table_name="tabla1", condition="name='Jack'")
+
+#Return important infos from database
+infos = database.get_db_info("tabla1", coloumn_name=["name", "age"])
+
 ```
 <img src="img/code_snap.png">
 

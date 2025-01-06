@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import codecs
 import os
-VERSION = '1.0'
+VERSION = '1.1'
 DESCRIPTION = 'An easy database package'
 LONG_DESCRIPTION = 'A package that based on sqlite'
 

@@ -2,18 +2,21 @@ import sqlite3
 
 
 class create:
-    version = "EasyDB 1.0"
+    version = "EasyDB 1.1"
     
-    def __init__(self, db_name):
+    
+    def __init__(self, db_name: str, log: bool):
         self.db_name = db_name
+        self.log = log
 
 
     def init_db(self):
         con = sqlite3.connect(f"{self.db_name}")
         cur = con.cursor()
-
-        
-        print("Adatbázis létrehozva!")
+        if self.log:
+            print("Adatbázis létrehozva!")
+        else:
+            pass
 
     def create_table(self, table_name, coloumn_name):
         con = sqlite3.connect(self.db_name)
@@ -24,7 +27,10 @@ class create:
         coloumn = coloumn[:-2]
         try:
             cur.execute(f"CREATE TABLE {table_name}(id INTEGER PRIMARY KEY AUTOINCREMENT, {coloumn})")
-            print("Tábla létrehozva")
+            if self.log:
+                print("Tábla létrehozva")
+            else:
+                pass
         except:
             pass
 
@@ -42,8 +48,10 @@ class create:
         cur = con.cursor()
         ins = cur.execute(f"insert into {table_name} ({coloumn}) values ({content})")
         con.commit()
-        print(f"{content} behelyezve ide: {coloumn_name}")
-
+        if self.log:
+            print(f"{content} behelyezve ide: {coloumn_name}")
+        else:
+            pass
 
 
     def select_item(self, table_name: str, coloumn_name: list):
@@ -69,7 +77,39 @@ class create:
         cur = con.cursor()
         ins = cur.execute(f"UPDATE {table_name} SET {coloumn_name} = '{new_value}' WHERE {condition}")
         con.commit()
-    
+        
+        
+    def get_db_info(self, table_name: str, coloumn_name: list):
+        conn = sqlite3.connect(self.db_name)
+        cursor = conn.cursor()
+
+        # Lekérdezés futtatása
+        cursor.execute(f"SELECT * FROM {table_name}")
+
+        # Adatok lekérése
+        coloumns_db = cursor.fetchall()
+        
+        cursor.execute(f"SELECT seq FROM sqlite_sequence")
+        rows = cursor.fetchall()
+        
+        b_row = ""
+        for row in coloumns_db:
+            #print(row)
+            b_row = row
+        
+        szam = 0
+        big_col = ""
+        for col in coloumn_name:
+            szam += 1 
+            #print(f"{szam}-dik elem: {col}")
+            big_col += f"{col}, "
+            b_row = row[szam]
+        big_col = big_col[:-2]
+
+        # Kapcsolat lezárása
+        conn.close()
+        
+        return self.db_name, big_col, rows[0][0], szam
     
 #=========dev functions=========
 
