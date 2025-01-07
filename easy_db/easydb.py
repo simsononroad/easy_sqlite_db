@@ -3,12 +3,12 @@ import sqlite3
 
 class create:
     version = "EasyDB 1.1"
-    creator = "Gyuris Dániel"
+    creator = "Gyuris"
     
     
-    def __init__(self, db_name: str, log: bool):
+    def __init__(self, db_name: str, debug_mode: bool):
         self.db_name = db_name
-        self.log = log
+        self.log = debug_mode
 
 
     def init_db(self):
