@@ -31,27 +31,27 @@ Függvény meghívása: `[variable name].[function name](function parameters)`
 
 - `init_db(database_name)` 
     - -> database_name: `str`
-- `create_table(database_name, table_name, columns)`
+- `create_table(table_name, columns)`
     - -> database_name: `str`
     - -> table_name: `str`
     - -> columns: `list`
 
-- `add_element(database_name, table_name, columns, content)`
+- `add_element(table_name, columns, content)`
     - -> database_name: `str`
     - -> table_name: `str`
     - -> columns: `list`
     - -> content: `list`
-- `select_item(database_name, table_name, columns)`, return -> Items
+- `select_item(table_name, columns)`, return -> Items
     - -> database_name: `str`
     - -> table_name: `str`
     - -> columns: `list`
-- `update_row(database_name, table_name, coloumn_name, new_value, condition)`
+- `update_row(table_name, coloumn_name, new_value, condition)`
     - -> database_name: `str`
     - -> table_name: `str`
     - -> coloumn_name: `str`
     - -> new_value: `str`/`int`
     - -> condition: `str`
-- `delete_row(database_name, table_name, condition)`
+- `delete_row(table_name, condition)`
     - -> database_name: `str`
     - -> table_name: `str`
     - -> condition: `str`
@@ -115,28 +115,28 @@ Függvény meghívása: `[változó név].[függvény neve](függvény paraméte
 
 - `init_db(database_name)`
     - -> database_name: `str`
-- `create_table(database_name, table_name, columns)`
+- `create_table(table_name, columns)`
     - -> database_name: `str`
     - -> table_name: `str`
     - -> columns: `list`
 
-- `add_element(database_name, table_name, columns, content)`
+- `add_element(table_name, columns, content)`
     - -> database_name: `str`
     - -> table_name: `str`
     - -> columns: `list`
     - -> content: `list`
-- `select_item(database_name, table_name, columns)`, visszatérési érték -> `list`
+- `select_item(table_name, columns)`, visszatérési érték -> `list`
     - -> database_name: `str`
     - -> table_name: `str`
     - -> columns: `str`
-- `update_row(database_name, table_name, coloumn_name, new_value, condition)`
+- `update_row(table_name, coloumn_name, new_value, condition)`
     - -> database_name: `str`
     - -> table_name: `str`
     - -> coloumn_name: `str`
     - -> new_value: `str`/`int`
     - -> condition: `str`
 
-- `delete_row(database_name, table_name, condition)`
+- `delete_row(table_name, condition)`
     - -> database_name: `str`
     - -> table_name: `str`
     - -> condition: `str`
