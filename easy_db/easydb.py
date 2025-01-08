@@ -94,9 +94,16 @@ class create:
         rows = cursor.fetchall()
         
         b_row = ""
-        for row in coloumns_db:
-            #print(row)
+        num_row = 0
+        for row in coloumn_name:
             b_row = row
+            id = b_row[1]
+
+        cursor.execute(f"SELECT id FROM {table_name}")
+        id = cursor.fetchall()
+        for ids in id:
+            num_row += 1
+
         
         szam = 0
         big_col = ""
@@ -110,7 +117,7 @@ class create:
         # Kapcsolat lezárása
         conn.close()
         
-        return self.db_name, big_col, rows[0][0], szam
+        return self.db_name, big_col, num_row, szam
     
 #=========dev functions=========
 
