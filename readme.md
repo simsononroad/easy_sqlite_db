@@ -63,7 +63,7 @@ Függvény meghívása: `[variable name].[function name](function parameters)`
 - `get_db_info(table_name, coloumn_name)`
     - -> table name: `str`
     - -> coloumn_name: `list`
-    - return:tuple -> firs: database name || second: coloumns_name || third: number of rows || fourth: number of coloumns
+    - return:tuple -> firs: database name || second: coloumns_name || third: number of rows || fourth: number of coloumns (coloumns with the ID coloumn)
 ### Developer mode
 - This can help for the developers when they want to start the code quickly
 

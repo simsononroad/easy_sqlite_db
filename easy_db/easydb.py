@@ -99,12 +99,13 @@ class create:
             b_row = row
             id = b_row[1]
 
+
         cursor.execute(f"SELECT id FROM {table_name}")
         id = cursor.fetchall()
         for ids in id:
             num_row += 1
 
-        
+        #num of coloumn
         szam = 0
         big_col = ""
         for col in coloumn_name:
@@ -117,7 +118,9 @@ class create:
         # Kapcsolat lezárása
         conn.close()
         
-        return self.db_name, big_col, num_row, szam
+        return self.db_name, big_col, num_row, szam+1
+    
+    
     
 #=========dev functions=========
 
