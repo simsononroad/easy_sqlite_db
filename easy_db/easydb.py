@@ -1,6 +1,6 @@
 import sqlite3
 
-
+n_szam = 0
 class create:
     version = "EasyDB 1.1"
     creator = "Gyuris Dániel"
@@ -81,12 +81,14 @@ class create:
         
         
     def get_db_info(self, table_name: str, coloumn_name: list):
+        global n_szam
         conn = sqlite3.connect(self.db_name)
         cursor = conn.cursor()
 
         # Lekérdezés futtatása
         cursor.execute(f"SELECT * FROM {table_name}")
 
+        self.table = table_name
         # Adatok lekérése
         coloumns_db = cursor.fetchall()
         
@@ -109,11 +111,14 @@ class create:
         szam = 0
         big_col = ""
         for col in coloumn_name:
-            szam += 1 
+            szam += 1
+            n_szam += 1
             #print(f"{szam}-dik elem: {col}")
             big_col += f"{col}, "
             b_row = row[szam]
         big_col = big_col[:-2]
+        
+        
 
         # Kapcsolat lezárása
         conn.close()
@@ -121,6 +126,13 @@ class create:
         return self.db_name, big_col, num_row, szam+1
     
     
+    
+    def recreate_id(self, table_name: str, coloumn_name: list):
+        conn = sqlite3.connect(self.db_name)
+        cursor = conn.cursor()
+        ins = cursor.execute(f"UPDATE sqlite_sequence SET seq='{n_szam}' WHERE 'name={table_name}'")
+        conn.commit()
+        print(n_szam)
     
 #=========dev functions=========
 
