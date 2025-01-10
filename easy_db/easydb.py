@@ -1,4 +1,6 @@
 import sqlite3
+import tkinter as tk
+
 
 n_szam = 0
 class create:
@@ -126,13 +128,26 @@ class create:
         return self.db_name, big_col, num_row, szam+1
     
     
+# ========GUI==================
+
+class gui:
+    def __init__(self, db_name: str, window_scale: str, debug_mode: bool):
+        self.db_name = db_name
+        self.log = debug_mode
+        self.win_scale = window_scale
     
-    def recreate_id(self, table_name: str, coloumn_name: list):
-        conn = sqlite3.connect(self.db_name)
-        cursor = conn.cursor()
-        ins = cursor.execute(f"UPDATE sqlite_sequence SET seq='{n_szam}' WHERE 'name={table_name}'")
-        conn.commit()
-        print(n_szam)
+    def open_window(self):
+        root = tk.Tk()
+        root.title("Databse gui")
+        
+        label = tk.Label(text="Name")
+        entry = tk.Entry()
+        
+        root.geometry(self.win_scale)
+        
+        
+        root.mainloop()
+
     
 #=========dev functions=========
 
