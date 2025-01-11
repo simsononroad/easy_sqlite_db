@@ -1,6 +1,7 @@
 Leírás/Description:
 - <a href="#english">English</a>
 - <a href="#magyar">Magyar</a>
+- <a href="https://github.com/simsononroad/easy_sqlite_db/wiki">Documentation</a>
 
 
 # English
@@ -25,7 +26,7 @@ Leírás/Description:
         - `True`: It will print out the log
         - `False`: This will not log out anything
 
-Függvény meghívása: `[variable name].[function name](function parameters)`
+function call: `[variable name].[function name](function parameters)`
 
 <a href="#példa">example</a>
 
