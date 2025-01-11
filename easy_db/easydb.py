@@ -6,18 +6,29 @@ n_szam = 0
 class create:
     version = "EasyDB 1.1"
     creator = "Gyuris Dániel"
+    website = ["https://op.gyuris.hu", 
+               "https://dani.gyuris.hu"]
+    github = "https://github.com/simsononroad"
     
     
     def __init__(self, db_name: str, debug_mode: bool):
         self.db_name = db_name
         self.log = debug_mode
+        if self.log:
+            print(f"""Courrent version: {create.version}\n
+Created by: {create.creator}\n
+Websites: 1 {create.website[0]} \n
+          2 {create.website[1]}\n
+Github: {create.github}""")
+        else:
+            pass
 
 
     def init_db(self):
         con = sqlite3.connect(f"{self.db_name}")
         cur = con.cursor()
         if self.log:
-            print("Adatbázis létrehozva!")
+            print("Database created")
         else:
             pass
 
@@ -31,7 +42,7 @@ class create:
         try:
             cur.execute(f"CREATE TABLE {table_name}(id INTEGER PRIMARY KEY AUTOINCREMENT, {coloumn})")
             if self.log:
-                print("Tábla létrehozva")
+                print("Table created")
             else:
                 pass
         except:
@@ -52,7 +63,7 @@ class create:
         ins = cur.execute(f"insert into {table_name} ({coloumn}) values ({content})")
         con.commit()
         if self.log:
-            print(f"{content} behelyezve ide: {column_name}")
+            print(f"{content} placed here: {column_name}")
         else:
             pass
 
@@ -74,12 +85,20 @@ class create:
         cur = con.cursor()
         ins = cur.execute(f"DELETE FROM {table_name} WHERE {condition}")
         con.commit()
+        if self.log:
+            print(f"Element deleted where: {condition}")
+        else:
+            pass
         
     def update_row(self, table_name: str, column_name: str, new_value: str, condition: str):
         con = sqlite3.connect(self.db_name)
         cur = con.cursor()
         ins = cur.execute(f"UPDATE {table_name} SET {column_name} = '{new_value}' WHERE {condition}")
         con.commit()
+        if self.log:
+            print(f"Element updated where: {condition} to {new_value}")
+        else:
+            pass
         
         
     def get_db_info(self, table_name: str, column_name: list):
@@ -166,7 +185,6 @@ def quick_start(coloumn_name: list):
         print("Tábla létrehozva")
     except:
         pass
-    
     
 def quick_add(coloumn_name: list, contents: list):
     coloumn = ""
