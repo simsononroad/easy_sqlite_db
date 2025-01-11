@@ -21,11 +21,11 @@ class create:
         else:
             pass
 
-    def create_table(self, table_name, coloumn_name):
+    def create_table(self, table_name, column_name):
         con = sqlite3.connect(self.db_name)
         cur = con.cursor()
         coloumn = ""
-        for col in coloumn_name:
+        for col in column_name:
             coloumn += f"{col}, "
         coloumn = coloumn[:-2]
         try:
@@ -37,10 +37,10 @@ class create:
         except:
             pass
 
-    def add_element(self, table_name: str, coloumn_name: list, contents: list):
+    def add_element(self, table_name: str, column_name: list, contents: list):
         coloumn = ""
         content = ""
-        for col in coloumn_name:
+        for col in column_name:
             coloumn += f"{col}, "
         coloumn = coloumn[:-2]
 
@@ -52,17 +52,17 @@ class create:
         ins = cur.execute(f"insert into {table_name} ({coloumn}) values ({content})")
         con.commit()
         if self.log:
-            print(f"{content} behelyezve ide: {coloumn_name}")
+            print(f"{content} behelyezve ide: {column_name}")
         else:
             pass
 
 
-    def select_item(self, table_name: str, coloumn_name: list):
+    def select_item(self, table_name: str, column_name: list):
         con = sqlite3.connect(self.db_name)
         cur = con.cursor()
         coloumn = ""
         content = ""
-        for col in coloumn_name:
+        for col in column_name:
             coloumn += f"{col}, "
         coloumn = coloumn[:-2]
         ins = cur.execute(f"select {coloumn} FROM {table_name}")
@@ -75,14 +75,14 @@ class create:
         ins = cur.execute(f"DELETE FROM {table_name} WHERE {condition}")
         con.commit()
         
-    def update_row(self, table_name: str, coloumn_name: str, new_value: str, condition: str):
+    def update_row(self, table_name: str, column_name: str, new_value: str, condition: str):
         con = sqlite3.connect(self.db_name)
         cur = con.cursor()
-        ins = cur.execute(f"UPDATE {table_name} SET {coloumn_name} = '{new_value}' WHERE {condition}")
+        ins = cur.execute(f"UPDATE {table_name} SET {column_name} = '{new_value}' WHERE {condition}")
         con.commit()
         
         
-    def get_db_info(self, table_name: str, coloumn_name: list):
+    def get_db_info(self, table_name: str, column_name: list):
         global n_szam
         conn = sqlite3.connect(self.db_name)
         cursor = conn.cursor()
@@ -99,7 +99,7 @@ class create:
         
         b_row = ""
         num_row = 0
-        for row in coloumn_name:
+        for row in column_name:
             b_row = row
             id = b_row[1]
 
@@ -112,7 +112,7 @@ class create:
         #num of coloumn
         szam = 0
         big_col = ""
-        for col in coloumn_name:
+        for col in column_name:
             szam += 1
             n_szam += 1
             #print(f"{szam}-dik elem: {col}")
@@ -128,25 +128,19 @@ class create:
         return self.db_name, big_col, num_row, szam+1
     
     
-# ========GUI==================
 
-class gui:
-    def __init__(self, db_name: str, window_scale: str, debug_mode: bool):
+class templates:
+    def __init__(self, db_name: str, debug_mode: bool):
         self.db_name = db_name
         self.log = debug_mode
-        self.win_scale = window_scale
     
-    def open_window(self):
-        root = tk.Tk()
-        root.title("Databse gui")
-        
-        label = tk.Label(text="Name")
-        entry = tk.Entry()
-        
-        root.geometry(self.win_scale)
-        
-        
-        root.mainloop()
+    def login(self):
+        a = create(self.db_name, debug_mode=False)
+        a.create_table(table_name="login", column_name=["name", "password"])
+
+    def chat(self):
+        a = create(self.db_name, debug_mode=False)
+        a.create_table(table_name="chat", column_name=["sender", "message", "time"])
 
     
 #=========dev functions=========
