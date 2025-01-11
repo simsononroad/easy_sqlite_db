@@ -127,7 +127,7 @@ class create:
         
         return self.db_name, big_col, num_row, szam+1
     
-    
+#======templates===========
 
 class templates:
     def __init__(self, db_name: str, debug_mode: bool):
@@ -141,6 +141,12 @@ class templates:
     def chat(self):
         a = create(self.db_name, debug_mode=False)
         a.create_table(table_name="chat", column_name=["sender", "message", "time"])
+    
+    def shop(self):
+        a = create(self.db_name, debug_mode=False)
+        a.create_table(table_name="products", column_name=["name", "price", "discount"])
+        a.create_table(table_name="customer", column_name=["name", "password"])
+        
 
     
 #=========dev functions=========
