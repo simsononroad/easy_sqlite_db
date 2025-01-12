@@ -206,3 +206,14 @@ infos = database.get_db_info("tabla1", coloumn_name=["name", "age"])
 ```
 <img src="img/code_snap.png">
 
+## template
+
+```
+temp = templates(db_name="temp.db", debug_mode=True)
+
+temp.shop()
+temp.chat()
+temp.login()
+```
+<img src="img/code_snap3.png">
+
