@@ -165,9 +165,34 @@ class templates:
         a = create(self.db_name, debug_mode=False)
         a.create_table(table_name="products", column_name=["name", "price", "discount"])
         a.create_table(table_name="customer", column_name=["name", "password"])
-        
-
     
+
+#=========console==========
+
+import os
+class console:
+    def __init__(self, debug_mode: bool):
+        self.log = debug_mode
+    def start(self):
+        try:
+            os.system("clear")
+        except:
+            os.system("clear")
+        while True:
+            command_line = input(">")
+            match command_line:
+                case "help":
+                    print("segítségek")
+                case "create db":
+                    db_name = input("Database name >> ")
+                    a = create(db_name=db_name, debug_mode=self.log)
+                    a.init_db()
+                case "add table":
+                    table_name = input("Table name >> ")
+                    columns = input("column name >> ")
+                    a.create_table(table_name=table_name, column_name=columns)
+                
+
 #=========dev functions=========
 
     
