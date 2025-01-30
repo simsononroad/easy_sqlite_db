@@ -1,5 +1,6 @@
 import sqlite3
 import tkinter as tk
+import inspect
 
 
 n_szam = 0
@@ -145,6 +146,35 @@ Github: {create.github}""")
         conn.close()
         
         return self.db_name, big_col, num_row, szam+1
+    
+    def add_variable(self, variable):
+            """Eltárolja a változó nevét és értékét az adatbázisban."""
+            # Hívó keret vizsgálata
+            frame = inspect.currentframe().f_back
+            var_name = None
+
+            for name, val in frame.f_locals.items():
+                if val is variable:
+                    var_name = name
+                    break
+
+            if var_name is None:
+                raise ValueError("Nem sikerült azonosítani a változó nevét.")
+
+            # Adatbázisba mentés
+            con = sqlite3.connect(self.db_name)
+            cur = con.cursor()
+            cur.execute("INSERT INTO variables (name, value) VALUES (?, ?)", (var_name, str(variable)))
+            con.commit()
+            con.close()
+
+            if self.log:
+                print(f"Változó mentve: {var_name} = {variable}")
+            else:pass
+        
+
+        
+        
     
 #======templates===========
 
