@@ -4,7 +4,7 @@ import inspect
 
 
 n_szam = 0
-class create:
+class sqlite:
     version = "EasyDB 1.1"
     creator = "Gyuris Dániel"
     website = ["https://op.gyuris.hu", 
@@ -16,11 +16,11 @@ class create:
         self.db_name = db_name
         self.log = debug_mode
         if self.log:
-            print(f"""Courrent version: {create.version}\n
-Created by: {create.creator}\n
-Websites: 1 {create.website[0]} \n
-          2 {create.website[1]}\n
-Github: {create.github}""")
+            print(f"""Courrent version: {sqlite.version}\n
+Created by: {sqlite.creator}\n
+Websites: 1 {sqlite.website[0]} \n
+          2 {sqlite.website[1]}\n
+Github: {sqlite.github}""")
         else:
             pass
 
@@ -57,11 +57,12 @@ Github: {create.github}""")
         coloumn = coloumn[:-2]
 
         for cont in contents:
-            content += f"'{cont}', "
+            content += f"{cont}, "
         content = content[:-2]
+        print(content)
         con = sqlite3.connect(self.db_name)
         cur = con.cursor()
-        ins = cur.execute(f"insert into {table_name} ({coloumn}) values ({content})")
+        ins = cur.execute(f"insert into {table_name} ({coloumn}) values {content}")
         con.commit()
         if self.log:
             print(f"{content} placed here: {column_name}")
