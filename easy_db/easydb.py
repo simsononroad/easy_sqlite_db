@@ -185,15 +185,15 @@ class templates:
         self.log = debug_mode
     
     def login(self):
-        a = create(self.db_name, debug_mode=False)
+        a = sqlite(self.db_name, debug_mode=False)
         a.create_table(table_name="login", column_name=["name", "password"])
 
     def chat(self):
-        a = create(self.db_name, debug_mode=False)
+        a = sqlite(self.db_name, debug_mode=False)
         a.create_table(table_name="chat", column_name=["sender", "message", "time"])
     
     def shop(self):
-        a = create(self.db_name, debug_mode=False)
+        a = sqlite(self.db_name, debug_mode=False)
         a.create_table(table_name="products", column_name=["name", "price", "discount"])
         a.create_table(table_name="customer", column_name=["name", "password"])
     
@@ -216,7 +216,7 @@ class console:
                     print("segítségek")
                 case "create db":
                     db_name = input("Database name >> ")
-                    a = create(db_name=db_name, debug_mode=self.log)
+                    a = sqlite(db_name=db_name, debug_mode=self.log)
                     a.init_db()
                 case "add table":
                     table_name = input("Table name >> ")
