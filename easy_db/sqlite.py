@@ -1,6 +1,13 @@
 import sqlite3
 import tkinter as tk
 import inspect
+import hashlib
+
+def normal_to_hash(atalakitando, encode="UTF-8"):
+    password = atalakitando
+
+    password_hash = hashlib.sha256(password.encode(encode)).hexdigest()
+    return password_hash
 
 
 n_szam = 0
@@ -57,20 +64,91 @@ Github: {sqlite.github}""")
         coloumn = coloumn[:-2]
 
         for cont in contents:
-            content += f"{cont}, "
+            content += f"'{cont}', "
         content = content[:-2]
-        print(content)
-        con = sqlite3.connect(self.db_name)
-        cur = con.cursor()
-        ins = cur.execute(f"insert into {table_name} ({coloumn}) values {content}")
-        con.commit()
+        conn = sqlite3.connect(self.db_name)
+        cur = conn.cursor()
+        print(f"insert into {table_name} ({coloumn}) values ({content})")
+        ins = cur.execute(f"insert into {table_name} ({coloumn}) values ({content})")
+        conn.commit()
         if self.log:
             print(f"{content} placed here: {column_name}")
         else:
             pass
 
+    def add_hashed_values(self, table_name: str, column_name: list, contents: list, encode = "UTF-8"):
+        coloumn = ""
+        content = ""
+        for col in column_name:
+            coloumn += f"{col}, "
+        coloumn = coloumn[:-2]
 
-    def select_item(self, table_name: str, column_name: list):
+        for cont in contents:
+            cont = normal_to_hash(cont)
+            content += f"'{cont}', "
+        content = content[:-2]
+        con = sqlite3.connect(self.db_name)
+        cur = con.cursor()
+        print(coloumn)
+        print(content)
+        print(f"insert into {table_name} ({coloumn}) values ({content})")
+        ins = cur.execute(f"insert into {table_name} ({coloumn}) values ({content})")
+        con.commit()
+    
+    class average:
+        def __init__(self, db_name, table_name: str, column_name: str):
+            self.table_name = table_name
+            self.column_name = column_name
+            self.db_name = db_name 
+        def from_database(self):
+            con = sqlite3.connect(self.db_name)
+            cur = con.cursor()
+            coloumn = ""
+            for col in self.column_name:
+                coloumn += f"{col}, "
+            coloumn = coloumn[:-2]
+            
+            ins = cur.execute(f"select {coloumn} FROM {self.table_name}")
+            output = cur.fetchall()
+            
+            output_list = []
+            
+            osszeadas = int()
+            
+            try:
+                for szamok in output:
+                    output_list.append(int(szamok[0]))
+            except:
+                print(f"Have string in the {coloumn} coloumn")
+                exit()
+            
+            for szamok in output_list:
+                osszeadas += szamok
+
+            eredmeny = osszeadas/len(output_list)
+            
+            return eredmeny
+        
+        def with_value(self, values: list):
+            output_list = []
+            
+            osszeadas = int()
+            
+            try:
+                for szamok in values:
+                    output_list.append(int(szamok))
+            except:
+                print(f"Have string in the value")
+                exit()
+
+            for szamok in output_list:
+                osszeadas += szamok
+
+            eredmeny = osszeadas/len(output_list)
+            
+            return eredmeny
+            
+    def select_item(self, table_name: str, column_name: list, with_condition: bool, condition=None):
         con = sqlite3.connect(self.db_name)
         cur = con.cursor()
         coloumn = ""
@@ -78,8 +156,17 @@ Github: {sqlite.github}""")
         for col in column_name:
             coloumn += f"{col}, "
         coloumn = coloumn[:-2]
-        ins = cur.execute(f"select {coloumn} FROM {table_name}")
-        output = cur.fetchall()
+        
+        if with_condition:
+            if condition == None:
+                print("Give a condition")
+                exit()
+            else:
+                ins = cur.execute(f"select {coloumn} FROM {table_name} where {condition}")  
+                output = cur.fetchall()
+        else:  
+            ins = cur.execute(f"select {coloumn} FROM {table_name}")
+            output = cur.fetchall()
         return output
 
     def delete_row(self, table_name: str, condition: str):
