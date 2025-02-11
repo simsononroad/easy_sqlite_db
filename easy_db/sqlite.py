@@ -68,7 +68,6 @@ Github: {sqlite.github}""")
         content = content[:-2]
         conn = sqlite3.connect(self.db_name)
         cur = conn.cursor()
-        print(f"insert into {table_name} ({coloumn}) values ({content})")
         ins = cur.execute(f"insert into {table_name} ({coloumn}) values ({content})")
         conn.commit()
         if self.log:
@@ -89,9 +88,6 @@ Github: {sqlite.github}""")
         content = content[:-2]
         con = sqlite3.connect(self.db_name)
         cur = con.cursor()
-        print(coloumn)
-        print(content)
-        print(f"insert into {table_name} ({coloumn}) values ({content})")
         ins = cur.execute(f"insert into {table_name} ({coloumn}) values ({content})")
         con.commit()
     
